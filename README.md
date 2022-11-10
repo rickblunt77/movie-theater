@@ -27,3 +27,10 @@ This is a poorly written application, and we're expecting the candidate to great
   * Any movies showing on 7th, you'll get 1$ discount
   * The discount amount applied only one if met multiple rules; biggest amount one
 * We want to print the movie schedule with simple text & json format
+
+## Changes
+* Refactor Reservations as property of Customer and updated test case
+* Refactor Showing class to include price and discount methods and added additional methods for calculating discounts
+* Add printJSONSchedule method to Theater class
+* Added tests to test discounts
+
