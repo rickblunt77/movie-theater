@@ -11,12 +11,13 @@ public class ReservationTests {
 
     @Test
     void totalFee() {
-        var customer = new Customer("John Doe", "unused-id");
         var showing = new Showing(
-                new Movie("Spider-Man: No Way Home", Duration.ofMinutes(90), 12.5, 1),
+                new Movie("Spider-Man: No Way Home", Duration.ofMinutes(90)),
                 1,
-                LocalDateTime.now()
+                LocalDateTime.now(),
+                12.5,
+                MovieSpecialType.SPECIAL
         );
-        assertTrue(new Reservation(customer, showing, 3).totalFee() == 37.5);
+        assertTrue(new Reservation(showing, 3).totalFee() == 37.5);
     }
 }

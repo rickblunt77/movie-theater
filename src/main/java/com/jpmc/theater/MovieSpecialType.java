@@ -1,2 +1,6 @@
-package com.jpmc.theater;public enum MovieSpecialType {
+package com.jpmc.theater;
+
+enum MovieSpecialType {
+    SPECIAL,
+    NONE
 }

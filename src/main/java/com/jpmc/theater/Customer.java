@@ -1,12 +1,14 @@
 package com.jpmc.theater;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Customer {
 
-    private String name;
-
-    private String id;
+    private final String name;
+    private final String id;
+    private List<Reservation> reservations;
 
     /**
      * @param name customer name
@@ -14,10 +16,22 @@ public class Customer {
      */
     public Customer(String name, String id) {
         this.id = id; // NOTE - id is not used anywhere at the moment
-
         this.name = name;
+    }
 
-        }
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    /**
+     *
+     * @param showing instance of Showing class
+     * @param howManyTickets number of tickets for reservation
+     */
+    public void makeReservation(Showing showing, int howManyTickets) {
+        if (reservations == null) reservations = new ArrayList<>();
+        reservations.add(new Reservation(showing, howManyTickets));
+    }
 
     @Override
     public boolean equals(Object o) {
