@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.Duration;
 import java.util.Objects;
 
-public class Movie implements Serializable {
+public class Movie {
 
     private final String title;
     private String description;
