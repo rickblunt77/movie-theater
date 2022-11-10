@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CustomerTests {
     @Test
+    //This test validates that the correct fee is charged when a customer makes a reservation for multiple guests
     void totalFeeForCustomer() {
         Movie spiderMan = new Movie("Spider-Man: No Way Home", Duration.ofMinutes(90));
         Showing showing = new Showing(spiderMan, 2, LocalDateTime.of(LocalDate.of(2022, 9, 1), LocalTime.of(1,0)), 12.5, MovieSpecialType.SPECIAL);

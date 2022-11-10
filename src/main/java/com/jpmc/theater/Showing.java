@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-public class Showing implements Serializable {
+public class Showing {
     private final Movie movie;
     private final int sequenceOfTheDay;
     private final LocalDateTime showStartTime;
