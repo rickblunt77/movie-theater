@@ -2,17 +2,25 @@ package com.jpmc.theater;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.time.LocalDate;
 
 public class TheaterTests {
-    Theater theater = new Theater(LocalDateProvider.singleton());
+    Theater theater;
+
+    public TheaterTests() {
+        TestConfig config = new TestConfig();
+        LocalDate scheduleDate = LocalDate.of(2022, 11, 1);
+        config.configure(scheduleDate);
+        this.theater = config.getTheater();
+    }
+
     @Test
     void printMovieSchedule() {
-        theater.printSchedule();
+        theater.printSchedule(LocalDate.of(2022, 11, 9));
     }
 
     @Test
     void printJSONMovieSchedule() {
-        theater.printJSONSchedule();
+        theater.printJSONSchedule(LocalDate.of(2022, 11, 9));
     }
 }
