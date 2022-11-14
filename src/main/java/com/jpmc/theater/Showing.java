@@ -1,20 +1,19 @@
 package com.jpmc.theater;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-public class Showing {
-    private final Movie movie;
-    private final int sequenceOfTheDay;
-    private final LocalDateTime showStartTime;
-    private final double ticketPrice;
-    private final MovieSpecialType movieSpecialType;
+public class Showing implements Comparable<Showing> {
+    private Movie movie;
+    private DailySchedule schedule;
+    private LocalDateTime showStartTime;
+    private double ticketPrice;
+    private MovieSpecialType movieSpecialType;
 
-    public Showing(Movie movie, int sequenceOfTheDay, LocalDateTime showStartTime, double ticketPrice,
+    public Showing(Movie movie, DailySchedule schedule, LocalDateTime showStartTime, double ticketPrice,
                    MovieSpecialType movieSpecialType) {
         this.movie = movie;
-        this.sequenceOfTheDay = sequenceOfTheDay;
+        this.schedule = schedule;
         this.showStartTime = showStartTime;
         this.ticketPrice = ticketPrice;
         this.movieSpecialType = movieSpecialType;
@@ -33,7 +32,7 @@ public class Showing {
     }
 
     public int getSequenceOfTheDay() {
-        return sequenceOfTheDay;
+        return schedule.getShowingSequenceOfTheDay(this);
     }
 
     public double getTicketPrice() {
@@ -62,6 +61,7 @@ public class Showing {
     }
 
     private double getSequenceDiscount() {
+        int sequenceOfTheDay = getSequenceOfTheDay();
         double sequenceDiscount = 0;
         if (sequenceOfTheDay == 1) {
             sequenceDiscount = 3; // $3 discount for 1st show
@@ -83,5 +83,10 @@ public class Showing {
 
     private double getDayOfMonthDiscount() {
         return showStartTime.getDayOfMonth() == 7? 1 :0;
+    }
+
+    @Override
+    public int compareTo(Showing o) {
+        return getStartTime().compareTo(o.getStartTime());
     }
 }
